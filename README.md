@@ -22,7 +22,12 @@
 
 Ce projet utilise `weasyprint` pour la génération PDF.
 
-* **Windows** : Vous aurez besoin de GTK3. Suivez les instructions officielles de WeasyPrint pour Windows.
+* **Windows** : Vous **devez** installer GTK3 séparément. `pip install` ne suffit pas.
+    1. Téléchargez l'installateur `gtk3-runtime-x.x.x-x-x-x-ts-win64.exe` depuis [ce lien](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases).
+    2. Lors de l'installation, cochez **"Set up PATH environment variable"**.
+    3. Redémarrez votre terminal.
+    > *Sans cela, vous aurez l'erreur : `OSError: cannot load library 'libgobject-2.0-0'`.*
+
 * **Linux/macOS** : Installez les librairies graphiques nécessaires (ex: `pango`, `gdk-pixbuf`).
 
 ### 🚀 Installation rapide (PyPI)

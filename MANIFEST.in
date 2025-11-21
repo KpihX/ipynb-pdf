@@ -1,0 +1,3 @@
+recursive-include ipynb_pdf/css *.css
+recursive-include ipynb_pdf/templates *.html
+include ipynb_pdf/*.yaml
