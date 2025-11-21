@@ -37,11 +37,13 @@ def build_parser() -> argparse.ArgumentParser:
 	)
 	parser.add_argument(
 		"--html-output",
+		"-H",
 		help="If provided, dump the intermediate HTML to this path for inspection",
 		default=None,
 	)
 	parser.add_argument(
 		"--log-level",
+		"-l",
 		help="Logging level (DEBUG, INFO, WARNING, ERROR)",
 		default="INFO",
 	)
