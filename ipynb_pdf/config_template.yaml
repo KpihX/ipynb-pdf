@@ -1,0 +1,85 @@
+# ============================================================
+# IPYNB-PDF CONFIGURATION TEMPLATE
+# ============================================================
+
+# === CODE VISIBILITY ===
+hide_code_by_default: false
+remove_cells_with_tag: ['remove', 'internal']
+hide_code_with_tag: ['hide_code', 'secret']
+hide_output_with_tag: ['hide_output']
+show_outputs_with_tag: ['show_output']
+hide_import_only_cells: true
+hide_leading_imports: true
+page_break_marker: "<!-- PAGE_BREAK -->"
+
+# === PARTIAL CODE DISPLAY ===
+partial_code_by_default: false
+partial_code_with_tag: ['partial']
+partial_code_head_lines: 5
+partial_code_tail_lines: 5
+partial_code_separator_text: "# ... [{count} lines omitted] ..."
+
+# === NOTEBOOK ELEMENTS ===
+hide_execution_count: true
+reflow_markdown: true
+max_line_length: 100
+detect_long_code_lines: true
+long_line_threshold: 100
+
+# === PDF LAYOUT ===
+pdf_margin_top: 2.5cm
+pdf_margin_right: 2.5cm
+pdf_margin_bottom: 2.5cm
+pdf_margin_left: 2.5cm
+
+# === STYLES & TEMPLATES ===
+# Paths can be absolute or relative to this config file
+# Default styles included in the package:
+css_files:
+  - ipynb_pdf/css/base.css
+  - ipynb_pdf/css/code_formatting.css
+  - ipynb_pdf/css/premium_typography.css
+  - ipynb_pdf/css/document_structure.css
+template: ipynb_pdf/templates/base_template.html
+
+# === OUTPUT FILTERING ===
+hide_warnings: true
+hide_errors: false
+warning_patterns:
+  - "Warning"
+  - "DeprecationWarning"
+  - "FutureWarning"
+
+# === TABLE OF CONTENTS ===
+generate_toc: true
+toc_depth: 3
+toc_title: "Table of Contents"
+
+# === COVER PAGE ===
+generate_cover: true
+cover_institution: "My Institution"
+cover_subject: "Subject / Course Name"
+cover_title: "Document Title"
+cover_subtitle: "Subtitle or Description"
+cover_authors:
+  - "Author Name"
+cover_date: auto
+cover_quote: "Optional quote for the cover page."
+
+# === PAGE NUMBERING ===
+page_numbering: true
+page_number_format: "Page {page} / {total}"
+page_number_position: "bottom-center"
+
+# === SCIENTIFIC NUMBERING ===
+figure_numbering: true
+equation_numbering: true
+add_bibliography: true
+centralize_references: true
+
+# === TYPOGRAPHY ===
+text_font_family: "Charter, 'Palatino Linotype', serif"
+text_font_size: 10pt
+text_line_height: 1.5
+code_font_family: "'Fira Code', 'Consolas', monospace"
+code_font_size: 9pt
