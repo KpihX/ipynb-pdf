@@ -1,8 +1,8 @@
 [project]
 name = "ipynb-pdf"
-version = "0.1.0"
+version = "0.1.1"
 description = "Intelligent IPYNB to HTML/PDF exporter with cell-level preprocessing."
-authors = [{ name = "KpihX", email = "your.email@example.com" }]
+authors = [{ name = "KpihX", email = "kapoivha@gmail.com" }]
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
