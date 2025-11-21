@@ -25,6 +25,7 @@ def build_parser() -> argparse.ArgumentParser:
 	parser.add_argument("input", help="Path to the source .ipynb notebook")
 	parser.add_argument(
 		"--config",
+		"-c",
 		help="Optional YAML config file overriding defaults",
 		default=None,
 	)

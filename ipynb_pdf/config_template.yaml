@@ -7,7 +7,7 @@ hide_code_by_default: false
 remove_cells_with_tag: ['remove', 'internal']
 hide_code_with_tag: ['hide_code', 'secret']
 hide_output_with_tag: ['hide_output']
-show_outputs_with_tag: ['show_output']
+# show_outputs_with_tag: ['show_output']
 hide_import_only_cells: true
 hide_leading_imports: true
 page_break_marker: "<!-- PAGE_BREAK -->"
@@ -21,26 +21,26 @@ partial_code_separator_text: "# ... [{count} lines omitted] ..."
 
 # === NOTEBOOK ELEMENTS ===
 hide_execution_count: true
-reflow_markdown: true
-max_line_length: 100
+# reflow_markdown: true
+max_line_length: 120
 detect_long_code_lines: true
-long_line_threshold: 100
+long_line_threshold: 120
 
 # === PDF LAYOUT ===
-pdf_margin_top: 2.5cm
-pdf_margin_right: 2.5cm
-pdf_margin_bottom: 2.5cm
-pdf_margin_left: 2.5cm
+pdf_margin_top: 2cm
+pdf_margin_right: 2cm
+pdf_margin_bottom: 2cm
+pdf_margin_left: 2cm
 
 # === STYLES & TEMPLATES ===
 # Paths can be absolute or relative to this config file
-# Default styles included in the package:
-css_files:
-  - ipynb_pdf/css/base.css
-  - ipynb_pdf/css/code_formatting.css
-  - ipynb_pdf/css/premium_typography.css
-  - ipynb_pdf/css/document_structure.css
-template: ipynb_pdf/templates/base_template.html
+# Default styles included in the package (uncomment to override):
+# css_files:
+#   - ipynb_pdf/css/base.css
+#   - ipynb_pdf/css/code_formatting.css
+#   - ipynb_pdf/css/premium_typography.css
+#   - ipynb_pdf/css/document_structure.css
+# template: ipynb_pdf/templates/base_template.html
 
 # === OUTPUT FILTERING ===
 hide_warnings: true
@@ -49,6 +49,8 @@ warning_patterns:
   - "Warning"
   - "DeprecationWarning"
   - "FutureWarning"
+  - "UserWarning"
+  - "RuntimeWarning"
 
 # === TABLE OF CONTENTS ===
 generate_toc: true
@@ -73,13 +75,13 @@ page_number_position: "bottom-center"
 
 # === SCIENTIFIC NUMBERING ===
 figure_numbering: true
-equation_numbering: true
-add_bibliography: true
-centralize_references: true
+# equation_numbering: true
+# add_bibliography: true
+# centralize_references: true
 
 # === TYPOGRAPHY ===
-text_font_family: "Charter, 'Palatino Linotype', serif"
+# text_font_family: "Charter, 'Palatino Linotype', serif"
 text_font_size: 10pt
-text_line_height: 1.5
-code_font_family: "'Fira Code', 'Consolas', monospace"
+# text_line_height: 1.5
+# code_font_family: "'Fira Code', 'Consolas', monospace"
 code_font_size: 9pt

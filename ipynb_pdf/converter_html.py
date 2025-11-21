@@ -10,12 +10,31 @@ from jinja2 import Template
 from nbconvert import HTMLExporter
 from traitlets.config import Config
 
+from .config import PACKAGE_ROOT
 from .utils.document_structure import (
 	add_heading_ids,
 	extract_headings,
 	generate_cover_html,
 	generate_toc_html,
 )
+
+
+def resolve_resource_path(path_str: str) -> Path:
+	"""Resolve a path to a file, checking local FS first, then package resources."""
+	path = Path(path_str)
+	if path.exists():
+		return path
+
+	# If path starts with 'ipynb_pdf', try to find it in the package installation
+	# e.g. 'ipynb_pdf/templates/base.html' -> PACKAGE_ROOT/templates/base.html
+	parts = path.parts
+	if len(parts) > 1 and parts[0] == "ipynb_pdf":
+		candidate = PACKAGE_ROOT.joinpath(*parts[1:])
+		if candidate.exists():
+			return candidate
+	
+	return path
+
 
 
 def fix_relative_image_paths(html: str, notebook_path: Path) -> str:
@@ -100,12 +119,13 @@ def notebook_to_html(nb, config: Dict[str, Any], notebook_path: Path | None = No
 	# Combine cover, TOC, and body
 	full_body = cover_html + toc_html + body
 
-	template_text = Path(config["template"]).read_text(encoding="utf-8")
+	template_path = resolve_resource_path(config["template"])
+	template_text = template_path.read_text(encoding="utf-8")
 	template = Template(template_text)
 
 	css_blocks = []
 	for css_path in config.get("css_files", []):
-		path_obj = Path(css_path)
+		path_obj = resolve_resource_path(css_path)
 		if path_obj.exists():
 			css_blocks.append(path_obj.read_text(encoding="utf-8"))
 	
