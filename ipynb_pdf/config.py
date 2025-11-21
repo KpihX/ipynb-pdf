@@ -1,4 +1,4 @@
-"""Configuration helpers for ipynb-smart-exporter."""
+"""Configuration helpers for ipynb-pdf."""
 
 from __future__ import annotations
 

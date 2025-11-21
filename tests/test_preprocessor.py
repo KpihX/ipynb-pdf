@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import nbformat
 
-from ipynb_smart_exporter.preprocessor import preprocess_notebook
+from ipynb_pdf.preprocessor import preprocess_notebook
 
 
 def _make_notebook():
@@ -34,8 +34,14 @@ def test_markdown_reflow_and_hide_code():
 	assert len(processed.cells) == 3
 	md_lines = processed.cells[0].source.splitlines()
 	assert all(len(line) <= 40 for line in md_lines if line)
-	assert processed.cells[1].source == ""
-	assert processed.cells[2].source == ""
+	
+	# Check that the cell is marked for input removal instead of having empty source
+	assert "remove_input" in processed.cells[1].metadata.get("tags", [])
+	# Source should remain intact
+	assert processed.cells[1].source == 'import math'
+	
+	# Same for the third cell (import only)
+	assert "remove_input" in processed.cells[2].metadata.get("tags", [])
 
 
 def test_remove_cell_by_tag():

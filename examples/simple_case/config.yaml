@@ -43,6 +43,6 @@ hide_import_only_cells: true
 
 # === STYLES ET TEMPLATES ===
 css_files:
-  - ipynb_smart_exporter/css/base.css
-  - ipynb_smart_exporter/css/code_formatting.css
-template: ipynb_smart_exporter/templates/base_template.html
+  - ../../ipynb_pdf/css/base.css
+  - ../../ipynb_pdf/css/code_formatting.css
+template: ../../ipynb_pdf/templates/base_template.html

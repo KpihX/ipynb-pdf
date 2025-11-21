@@ -1,24 +1,54 @@
-# Python
+# === Python ===
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# === Virtual Environments ===
 env/
 venv/
 .venv/
-dist/
-build/
-*.egg-info/
+.env
 
-# Jupyter
+# === Jupyter Notebooks ===
 .ipynb_checkpoints/
-*.nbconvert
+profile_default/
+ipython_config.py
+*.nbconvert.html
+*.nbconvert.pdf
 
-# Outputs
-output.pdf
-*.pdf
-
-# OS / misc
+# === IDE / Editors ===
+.vscode/
+.idea/
+*.swp
+*.swo
 .DS_Store
 Thumbs.db
+
+# === Project Specific ===
+# Generated outputs in examples
+examples/**/*.pdf
+examples/**/*.html
+!examples/**/Ref/*.pdf  # Keep reference PDFs if any
+output.pdf
+debug_output.html
+
+# Logs
+*.log
+

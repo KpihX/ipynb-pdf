@@ -22,7 +22,7 @@ from .utils.reference_manager import ReferenceManager
 
 
 def _mark_hidden(cell, reason: str) -> None:
-	meta = cell.metadata.setdefault("smart_exporter", {})
+	meta = cell.metadata.setdefault("ipynb_pdf", {})
 	meta["hidden_reason"] = reason
 	tags = cell.metadata.setdefault("tags", [])
 	if "hidden" not in tags:

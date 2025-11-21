@@ -1,156 +1,160 @@
-# ipynb-smart-exporter
+# 📄 ipynb-pdf
 
-Intelligent `.ipynb` → HTML/PDF exporter with scientific publishing features.
+**Transformez vos Notebooks Jupyter en documents PDF professionnels et académiques.**
 
-## Features
+`ipynb-pdf` est un outil de conversion avancé conçu pour les scientifiques, les chercheurs et les data scientists qui souhaitent produire des rapports, des articles ou des thèses directement depuis Jupyter, sans passer par LaTeX manuellement.
 
-### Core Functionality
+---
 
-- ✅ **Smart preprocessing**: Keep/drop cells via tags, hide code while keeping outputs
-- ✅ **Professional styling**: Premium typography with Charter, Lato, and Fira Code fonts
-- ✅ **MathJax rendering**: Perfect LaTeX equations via Playwright/Chromium
-- ✅ **Code formatting**: Syntax highlighting, partial code masking, long line detection
+## 🚀 Pourquoi utiliser ipynb-pdf ?
 
-### Scientific Publishing
+* **📚 Gestion Intelligente des Références** : Centralise automatiquement vos citations, dédoublonne les entrées et génère une bibliographie propre en fin de document.
+* **🎨 Typographie Premium** : Utilise des polices de haute qualité (Charter, Lato, Fira Code) et une mise en page soignée (marges, interlignage, césure).
+* **🙈 Contrôle Granulaire** : Masquez le code, les sorties ou certaines cellules spécifiques grâce à un système de tags simple (`hide_code`, `internal`, `remove_input`).
+* **➗ Support Mathématique** : Rendu impeccable des équations LaTeX.
+* **⚙️ 100% Configurable** : Adaptez tout via un simple fichier YAML (marges, polices, comportements).
 
-- ✅ **Table of Contents**: Auto-generated from headings with clickable links
-- ✅ **Cover Page**: Professional design with title, author, institution, date
-- ✅ **Page Numbering**: Customizable footer with page numbers
-- ✅ **Warning Filtering**: Hide Python warnings and errors from outputs
-- ✅ **Figure Numbering**: Automatic figure and equation numbering
-- ✅ **Markdown Reflow**: Prevent text overflow in PDF
+---
 
-## Installation
+## 📦 Installation
 
-```bash
-python -m venv .venv
-.venv/Scripts/activate  # Windows
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
+### Prérequis
 
-### Required Dependencies
+Ce projet utilise `weasyprint` pour la génération PDF.
 
-**For MathJax rendering (recommended):**
-```bash
-pip install playwright
-playwright install chromium
-```
+* **Windows** : Vous aurez besoin de GTK3. Suivez les instructions officielles de WeasyPrint pour Windows.
+* **Linux/macOS** : Installez les librairies graphiques nécessaires (ex: `pango`, `gdk-pixbuf`).
 
-**For WeasyPrint (fallback):**
-On Windows:
-```powershell
-winget install -e --id=tschoonj.GTKForWindows
-```
+### 🚀 Installation rapide (PyPI)
 
-On Linux/macOS, follow the [official guide](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#install-weasyprint).
-
-## Quick Start
-
-### Basic Usage
+C'est la méthode recommandée. Ouvrez votre terminal et lancez :
 
 ```bash
-python -m ipynb_smart_exporter.cli notebook.ipynb \
-  --config config.yaml \
-  --output output.pdf \
-  --html-output output.html
+pip install ipynb-pdf
 ```
 
-### Scientific Document Example
+Une fois installé, la commande `ipynb-pdf` est disponible partout dans votre système.
+
+### 🔧 Installation depuis les sources (Développement)
+
+Si vous souhaitez contribuer ou tester la dernière version non publiée :
 
 ```bash
-python -m ipynb_smart_exporter.cli case/RandomAlgorithms.ipynb \
-  --config case/config_RandomAlgorithms.yaml \
-  --output case/RandomAlgorithms.pdf
+git clone https://github.com/KpihX/ipynb-pdf.git
+cd ipynb-pdf
+pip install .
 ```
 
-## Configuration
+---
 
-### Essential Options
+## 🛠️ Utilisation
+
+### Commande de base
+
+Convertissez un notebook en une seule ligne de commande :
+
+```bash
+ipynb-pdf mon_notebook.ipynb
+```
+
+### Avec configuration personnalisée
+
+Pour un contrôle total sur le rendu, utilisez un fichier de configuration :
+
+```bash
+ipynb-pdf mon_notebook.ipynb --config config.yaml --output rapport_final.pdf
+```
+
+---
+
+## 📂 Exemples
+
+Le dossier `examples/` contient tout ce qu'il faut pour démarrer :
+
+### 1. Cas Simple (`examples/simple_case/`)
+
+Une démonstration des fonctionnalités de base : masquage de code, tags, et formatage simple.
+
+```bash
+ipynb-pdf examples/simple_case/feature_demo.ipynb --config examples/simple_case/config.yaml
+```
+
+### 2. Cas Complexe (`examples/complex_case/`)
+
+Un exemple réel de papier académique ("Algorithmes Randomisés") avec :
+
+* Formules mathématiques complexes
+* Figures et graphiques
+* Bibliographie et citations croisées
+* Mise en page stricte
+
+```bash
+ipynb-pdf examples/complex_case/RandomAlgorithms.ipynb --config examples/complex_case/config_RandomAlgorithms.yaml
+```
+
+---
+
+## ⚙️ Configuration
+
+Créez un fichier `config.yaml` pour surcharger les paramètres par défaut. Voici les options principales :
 
 ```yaml
-# Appearance
-hide_execution_count: true          # Hide In[]/Out[] counters
-hide_code_by_default: false         # Show/hide code cells
+# === Apparence ===
+pdf_margin_top: 2.5cm
+pdf_margin_bottom: 2.5cm
+text_font_family: "Charter, serif"
+code_font_size: 9pt
 
-# Scientific Features
-generate_cover: true                # Enable cover page
-cover_title: "Your Title"
-cover_author: "Your Name"
-cover_institution: "Institution"
+# === Comportement ===
+hide_code_by_default: false       # Masquer tout le code par défaut ?
+hide_execution_count: true        # Masquer les [1]: ?
+reflow_markdown: true             # Reformater le texte Markdown ?
 
-generate_toc: true                  # Table of contents
-toc_depth: 3                        # Max heading level
+# === Tags Spéciaux ===
+remove_cells_with_tag: ['remove', 'internal']
+hide_code_with_tag: ['hide_code', 'secret']
+partial_code_with_tag: ['partial'] # Montre seulement le début/fin du code
 
-hide_warnings: true                 # Filter Python warnings
-page_numbering: true                # Page numbers
-figure_numbering: true              # Auto-number figures
-
-# PDF Margins
-pdf_margin_top: 2cm
-pdf_margin_right: 2.5cm
-pdf_margin_bottom: 2cm
-pdf_margin_left: 2.5cm
-
-# Styling
-css_files:
-  - ipynb_smart_exporter/css/base.css
-  - ipynb_smart_exporter/css/code_formatting.css
-  - ipynb_smart_exporter/css/premium_typography.css
-  - ipynb_smart_exporter/css/document_structure.css
+# === Bibliographie ===
+centralize_references: true       # Regrouper les références à la fin ?
 ```
 
-### Cell Tags
+---
 
-Tag cells in Jupyter via **View → Cell Toolbar → Tags**:
+## 🏗️ Structure du Projet
 
-| Tag | Effect |
-|-----|--------|
-| `remove` | Drop cell entirely |
-| `hide_code` | Hide code, keep output |
-| `partial_code` | Show first/last lines only |
-| `show_output` | Force output visibility |
-
-### Advanced Configuration
-
-See `case/config_RandomAlgorithms.yaml` for a complete example with all scientific features enabled.
-
-## Architecture
-
-```
-Notebook (.ipynb)
-  ↓
-Preprocessing (filter warnings, mask code)
-  ↓
-HTML Generation (cover page, TOC, content)
-  ↓
-PDF Generation (Playwright with MathJax or WeasyPrint)
+```text
+ipynb-pdf/
+├── ipynb_pdf/              # 🐍 Code source du package
+│   ├── css/                # 🎨 Feuilles de style CSS (Base, Typo, Code)
+│   ├── templates/          # 📝 Templates HTML (Jinja2)
+│   ├── utils/              # 🔧 Utilitaires (Preprocessing, Refs, Logs)
+│   ├── cli.py              # 💻 Point d'entrée ligne de commande
+│   └── config.py           # ⚙️ Gestion de la configuration
+├── examples/               # 💡 Exemples (Simple & Complexe)
+├── tests/                  # 🧪 Tests unitaires (Pytest)
+├── pyproject.toml          # 📦 Métadonnées du projet
+└── README.md               # 📖 Ce fichier
 ```
 
-## Testing
+---
+
+## 🧪 Développement
+
+Pour lancer la suite de tests et vous assurer que tout fonctionne :
 
 ```bash
-pytest
-pytest --maxfail=1 --disable-warnings -q
+pytest tests/
 ```
 
-## Example Output
+---
 
-The `case/` directory contains a complete scientific notebook (`RandomAlgorithms.ipynb`) with:
-- Complex LaTeX equations
-- Multiple figures and plots
-- Algorithm implementations
-- Mathematical proofs
+## 👤 Auteur
 
-Run the conversion to see all features in action!
+### KpihX
 
-## License
+* [GitHub Profile](https://github.com/KpihX)
 
-MIT
-- Plugin API for custom rules (e.g., hide cells by regex)
-- Alternative PDF backend (wkhtmltopdf, Paged.js, PrinceXML)
-- GitHub Action workflow that runs tests and publishes wheels
+## 📄 Licence
 
-## License
-
-Released under the MIT License. See `LICENSE`.
+Ce projet est sous licence **MIT**. Vous êtes libre de l'utiliser, le modifier et le distribuer.

@@ -1,10 +1,19 @@
 """Test the complete reference processing pipeline."""
 
+import sys
+import os
+from pathlib import Path
+
+# Add project root to sys.path
+project_root = Path(__file__).parent.parent.parent
+sys.path.append(str(project_root))
+
 import nbformat
 from ipynb_pdf.utils.reference_manager import ReferenceManager
 
 # Load notebook
-with open('examples/complex_case/RandomAlgorithms.ipynb', 'r', encoding='utf-8') as f:
+notebook_path = Path(__file__).parent / 'RandomAlgorithms.ipynb'
+with open(notebook_path, 'r', encoding='utf-8') as f:
     notebook = nbformat.read(f, as_version=4)
 
 print(f"Total cells before processing: {len(notebook.cells)}")

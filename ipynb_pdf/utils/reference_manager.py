@@ -233,24 +233,6 @@ class ReferenceManager:
         
         return mapping
     
-    def remove_reference_section(self, markdown_text: str) -> str:
-        """
-        Remove the local reference section from markdown text.
-        
-        Args:
-            markdown_text: The markdown source text
-        
-        Returns:
-            Text with reference section removed
-        """
-        # Find the reference section separator
-        match = self.REFERENCE_SECTION_PATTERN.search(markdown_text)
-        if not match:
-            return markdown_text
-        
-        # Remove everything from the separator onwards
-        return markdown_text[:match.start()].rstrip()
-    
     def update_citations_in_text(self, cell_index: int, markdown_text: str) -> str:
         """
         Update citation numbers in markdown text to use global numbering.

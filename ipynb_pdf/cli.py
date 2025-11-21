@@ -1,4 +1,4 @@
-"""Command-line interface for ipynb-smart-exporter."""
+"""Command-line interface for ipynb-pdf."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from .utils.logging_util import setup_logger
 from .utils.notebook_loader import load_notebook
 
 
-logger = setup_logger("ipynb_smart_exporter.cli")
+logger = setup_logger("ipynb_pdf.cli")
 
 
 def build_parser() -> argparse.ArgumentParser:

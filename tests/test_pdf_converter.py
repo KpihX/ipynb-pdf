@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from ipynb_smart_exporter.config import DEFAULT_CONFIG
-from ipynb_smart_exporter.converter_pdf import html_to_pdf
+from ipynb_pdf.config import DEFAULT_CONFIG
+from ipynb_pdf.converter_pdf import html_to_pdf
 
 
 def test_html_to_pdf_writes_file(tmp_path):

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import nbformat
 
-from ipynb_smart_exporter.config import DEFAULT_CONFIG
-from ipynb_smart_exporter.converter_html import notebook_to_html
+from ipynb_pdf.config import DEFAULT_CONFIG
+from ipynb_pdf.converter_html import notebook_to_html
 
 
 def test_notebook_to_html_contains_template_wrappers():

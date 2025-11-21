@@ -45,11 +45,11 @@ pdf_margin_left: 2.5cm
 
 # === STYLES ET TEMPLATES ===
 css_files:
-  - ../ipynb_smart_exporter/css/base.css
-  - ../ipynb_smart_exporter/css/code_formatting.css
-  - ../ipynb_smart_exporter/css/premium_typography.css
-  - ../ipynb_smart_exporter/css/document_structure.css
-template: ../ipynb_smart_exporter/templates/base_template.html
+  - ../../ipynb_pdf/css/base.css
+  - ../../ipynb_pdf/css/code_formatting.css
+  - ../../ipynb_pdf/css/premium_typography.css
+  - ../../ipynb_pdf/css/document_structure.css
+template: ../../ipynb_pdf/templates/base_template.html
 
 # === FILTRAGE DES SORTIES ===
 # Masquer les warnings pour un document propre
