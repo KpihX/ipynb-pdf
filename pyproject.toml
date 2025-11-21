@@ -1,6 +1,6 @@
 [project]
 name = "ipynb-pdf"
-version = "0.1.6"
+version = "0.1.7"
 description = "Intelligent IPYNB to HTML/PDF exporter with cell-level preprocessing."
 authors = [{ name = "KpihX", email = "kapoivha@gmail.com" }]
 readme = "README.md"

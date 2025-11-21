@@ -52,6 +52,31 @@ pip install .
 
 ---
 
+## ❓ Dépannage & Problèmes fréquents
+
+### 1. "La commande 'ipynb-pdf' n'est pas reconnue"
+
+Si vous obtenez une erreur indiquant que la commande est introuvable après l'installation, c'est probablement que le dossier des scripts Python n'est pas dans votre `PATH`.
+
+**Solutions :**
+
+* **Option A (Recommandée)** : Ajoutez le dossier Scripts de Python à votre PATH Windows (recherchez "Variables d'environnement" dans Windows).
+* **Option B (Alternative)** : Utilisez la commande via le module Python directement (notez l'underscore `_`) :
+
+    ```bash
+    python -m ipynb_pdf mon_notebook.ipynb
+    ```
+
+### 2. Erreur "OSError: cannot load library 'libgobject-2.0-0'"
+
+Ceci indique que **GTK3** n'est pas installé ou mal configuré.
+
+* Assurez-vous d'avoir installé GTK3 (voir section **Prérequis** ci-dessus).
+* Vérifiez que vous avez bien coché **"Set up PATH environment variable"** lors de l'installation de GTK3.
+* Redémarrez votre ordinateur si le redémarrage du terminal ne suffit pas.
+
+---
+
 ## 🛠️ Utilisation
 
 ### Commande de base
